@@ -2,6 +2,7 @@ import ujson
 import enums
 import servos
 import motor
+import sys
 
 
 def detail(topic, msg):
@@ -11,6 +12,9 @@ def detail(topic, msg):
     event = json_data.get("event")
     data = json_data.get("data")
     # 处理事件
+    if event == enums.STOP:
+        print("退出")
+        sys.exit(0)
     if event == enums.TURN:
         servos.s_17g.set_angle(data)
     elif event == enums.RUN:
