@@ -1,13 +1,25 @@
 from machine import Pin, PWM
 import time
 
+# L298 参数
+# PWM频率0-10KHz，限小脉宽10us
+# 引脚从上到下
+# 5V    5V
+# EN1   EN2
+# IN1   IN3
+# IN2   IN4
+# END   END
+# ESP32CAM对应引脚
+# EN1 -> IO12
+# IN1 -> IO13
+# EN2 -> IO15
 # 改变方向必须刹车0.1秒以上
 
 # 定义GPIO引脚
-p_in1 = Pin(12, Pin.OUT)
-p_in2 = Pin(13, Pin.OUT)
-p_en1 = PWM(Pin(15))
+p_en1 = PWM(Pin(12, mode=Pin.OUT))
 p_en1.freq(400)
+p_in1 = Pin(13, mode=Pin.OUT)
+p_in2 = Pin(15, mode=Pin.OUT)
 
 # speed 0-1023
 speed_max = 900
@@ -23,8 +35,9 @@ def go(speed):
     run_check(1)
     p_in1.value(1)
     p_in2.value(0)
-    # p_en1.value(1)
-    p_en1.duty(speed if speed < speed_max else speed_max)
+    duty = speed if speed < speed_max else speed_max
+    print("前进 duty ", duty)
+    p_en1.duty(duty)
 
 
 # 后退
@@ -32,8 +45,9 @@ def back(speed):
     run_check(2)
     p_in1.value(0)
     p_in2.value(1)
-    # p_en1.value(1)
-    p_en1.duty(speed if speed < speed_max else speed_max)
+    duty = speed if speed < speed_max else speed_max
+    print("后退 duty ", duty)
+    p_en1.duty(duty)
 
 
 # 停止短暂
