@@ -1,6 +1,5 @@
 import servos
 import time
 
-for i in range(180):
-    servos.s_sg90.set_angle(i)
-    time.sleep_ms(100)
+servos.s_17g.set_angle(120)
+time.sleep_ms(100)

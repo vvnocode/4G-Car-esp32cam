@@ -4,7 +4,7 @@ from machine import Pin, PWM
 class Servo:
     def __init__(self, pin, frequency, min_us, max_us, min_angle, max_angle):
         # 创建一个PWM对象
-        self.servo = PWM(Pin(pin))
+        self.servo = PWM(Pin(pin, mode=Pin.OUT))
 
         # 舵机参数
         self.frequency = frequency  # 舵机的频率 300Hz

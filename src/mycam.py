@@ -20,7 +20,7 @@ camera.flip(1)
 camera.mirror(1)
 
 # 分辨率
-camera.framesize(camera.FRAME_QVGA)
+camera.framesize(camera.FRAME_HVGA)
 # 选项如下：
 # FRAME_96X96 FRAME_QQVGA FRAME_QCIF FRAME_HQVGA FRAME_240X240
 # FRAME_QVGA FRAME_CIF FRAME_HVGA FRAME_VGA FRAME_SVGA 320 * 240
@@ -37,7 +37,7 @@ camera.speffect(camera.EFFECT_NONE)
 # EFFECT_NONE (default) EFFECT_NEG \EFFECT_BW\ EFFECT_RED\ EFFECT_GREEN\ EFFECT_BLUE\ EFFECT_RETRO
 
 # 白平衡
-# camera.whitebalance(camera.WB_HOME)
+camera.whitebalance(camera.WB_HOME)
 # 选项如下：
 # WB_NONE (default) WB_SUNNY WB_CLOUDY WB_OFFICE WB_HOME
 
@@ -67,7 +67,7 @@ try:
     while True:
         buf = camera.capture()  # 获取图像数据
         s.sendto(buf, ("192.168.0.153", 9090))  # 向服务器发送图像数据
-        time.sleep(0.1)
+        # time.sleep(0.033)
 except:
     pass
 finally:

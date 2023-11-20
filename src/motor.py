@@ -4,10 +4,9 @@ import time
 # 改变方向必须刹车0.1秒以上
 
 # 定义GPIO引脚
-p_in1 = Pin(16, Pin.OUT)
-p_in2 = Pin(5, Pin.OUT)
-# p_en1 = Pin(4, Pin.OUT)
-p_en1 = PWM(Pin(4))
+p_in1 = Pin(12, Pin.OUT)
+p_in2 = Pin(13, Pin.OUT)
+p_en1 = PWM(Pin(15))
 p_en1.freq(400)
 
 # speed 0-1023

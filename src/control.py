@@ -4,6 +4,9 @@ import servos
 import motor
 import sys
 
+# esp32cam中，板子上的 GPIO = PIN
+# GPIO 2/12/13/14/15 支持 PWM 输出因此被用于电机驱动相关的设计中
+# GPIO 4 也支持 PWM 输出，是本设计中灯光（开发板自带）的控制口
 
 def detail(topic, msg):
     # 解析报文
